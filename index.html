@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>TecRoom - Classroom Virtual</title>
+    <!-- Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="CSS/index.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js?v=2025-12-15"></script>
+</head>
+<body class="bg-light">
+    <div class="container-fluid vh-100">
+        <div class="row h-100">
+            <div class="col-md-6 d-none d-md-flex align-items-center justify-content-center bg-primary text-white">
+                <div class="text-center p-5">
+                    <div class="mb-4">
+                        <i class="bi bi-mortarboard-fill display-1"></i>
+                    </div>
+                    <h1 class="display-4 fw-bold mb-3">TecRoom</h1>
+                    <p class="lead mb-4">Tu salon de clases al alcance de un click</p>
+                    <div class="row text-center">
+                        <div class="col-4">
+                            <i class="bi bi-book-fill fs-1"></i>
+                            <p class="mt-2">Proyectos</p>
+                        </div>
+                        <div class="col-4">
+                            <i class="bi bi-people-fill fs-1"></i>
+                            <p class="mt-2">Estudiantes</p>
+                        </div>
+                        <div class="col-4">
+                            <i class="bi bi-award-fill fs-1"></i>
+                            <p class="mt-2">Tareas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Login Form -->
+            <div class="col-md-6 d-flex align-items-center justify-content-center">
+                <div class="w-100" style="max-width: 400px;">
+                    <div class="card shadow-lg border-0 rounded-4">
+                        <div class="card-body p-5">
+                            <!-- Mobile Logo -->
+                            <div class="text-center d-md-none mb-4">
+                                <i class="bi bi-mortarboard-fill text-primary" style="font-size: 3rem;"></i>
+                                <h2 class="text-primary fw-bold">TecRoom</h2>
+                            </div>
+                            
+                            <div class="text-center mb-4">
+                                <h3 class="fw-bold text-dark">Iniciar Sesión</h3>
+                                <p class="text-muted">Accede a tu salón virtual</p>
+                            </div>
+                            
+                            <form id="loginForm">
+                                <div class="mb-3">
+                                    <label for="email" class="form-label text-dark fw-medium">Número de Control</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light border-end-0">
+                                            <i class="bi bi-person-badge text-muted"></i>
+                                        </span>
+                                        <input type="text" class="form-control border-start-0 ps-0" id="email" 
+                                               placeholder="Ej: 23130666" maxlength="8" pattern="[0-9]{8}" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="password" class="form-label text-dark fw-medium">Contraseña</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light border-end-0">
+                                            <i class="bi bi-lock text-muted"></i>
+                                        </span>
+                                        <input type="password" class="form-control border-start-0 border-end-0 ps-0" 
+                                               id="password" placeholder="••••••••" required>
+                                        <span class="input-group-text bg-light border-start-0 cursor-pointer" 
+                                              id="togglePassword">
+                                            <i class="bi bi-eye text-muted"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="mb-3 d-flex justify-content-between align-items-center">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="rememberMe">
+                                        <label class="form-check-label text-muted" for="rememberMe">
+                                            Recordarme
+                                        </label>
+                                    </div>
+                                    
+                                </div>
+                                <a href="#" class="text-primary text-decoration-none" data-bs-toggle="modal" 
+                                       data-bs-target="#forgotPasswordModal">
+                                        ¿Olvidaste tu contraseña?
+                                    </a>
+                                <button type="submit" class="btn btn-primary w-100 py-2 fw-medium">
+                                    <i class="bi bi-box-arrow-in-right me-2"></i>
+                                    Iniciar Sesión
+                                </button>
+                            </form>
+                            <div class="text-center mt-4">
+                                <div class="position-relative">
+                                    <hr class="my-4">
+                                    <span class="position-absolute top-50 start-50 translate-middle bg-white px-3 text-muted">
+                                        ¿No tienes cuenta?
+                                    </span>
+                                </div>
+                                <button class="btn btn-outline-primary w-100 py-2 fw-medium" data-bs-toggle="modal" 
+                                        data-bs-target="#registerModal">
+                                    <i class="bi bi-person-plus me-2"></i>
+                                    Crear Cuenta
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Registro -->
+    <div class="modal fade" id="registerModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title fw-bold">Crear Nueva Cuenta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body pt-0">
+                    <form id="registerForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="firstName" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="firstName" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName" class="form-label">Apellido</label>
+                                <input type="text" class="form-control" id="lastName" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerEmail" class="form-label">Correo electrónico</label>
+                            <input type="email" class="form-control" id="registerEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="studentId" class="form-label">Nº de Control</label>
+                            <input type="text" class="form-control" id="studentId" placeholder="2313...." required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerPassword" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="registerPassword" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label">Confirmar contraseña</label>
+                            <input type="password" class="form-control" id="confirmPassword" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="acceptTerms" required>
+                            <label class="form-check-label" for="acceptTerms">
+                                Acepto los <a href="#" class="text-primary">términos y condiciones</a>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 py-2 fw-medium">
+                            <i class="bi bi-person-check me-2"></i>
+                            Crear Cuenta
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Recuperar Contraseña -->
+    <div class="modal fade" id="forgotPasswordModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title fw-bold">Recuperar Contraseña</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body pt-0">
+                    <p class="text-muted mb-4">lol k mal</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

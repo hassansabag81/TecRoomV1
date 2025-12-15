@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TecRoom - Mis Proyectos</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../CSS/mainMenu.css">
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../js/mainMenu.js"></script>
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-graduation-cap me-2"></i>
+                TecRoom
+            </a>
+            
+            <!-- User info y logout -->
+            <div class="navbar-nav ms-auto">
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
+                        <i class="fas fa-user-circle me-1"></i>
+                        <span id="userName">Usuario</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Mi Perfil</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Configuración</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#" id="logoutBtn"><i class="fas fa-sign-out-alt me-2"></i>Cerrar Sesión</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main -->
+    <div class="container-fluid mt-4">
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="welcome-section">
+                    <h2 class="welcome-title">
+                        <i class="fas fa-home me-2"></i>
+                        Bienvenido, <span id="welcomeUserName">Usuario</span>
+                    </h2>
+                    <p class="welcome-subtitle text-muted">
+                        Hora de chambear!
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cards -->
+        <div class="row mb-4">
+            <div class="col-md-3 col-sm-6 mb-3">
+                <div class="card stat-card bg-primary text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h4 id="totalProjects" class="card-title">0</h4>
+                                <p class="card-text">Mis Proyectos</p>
+                            </div>
+                            <div class="stat-icon">
+                                <i class="fas fa-folder-open fa-2x"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-3 col-sm-6 mb-3">
+                <div class="card stat-card bg-success text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h4 id="activeTasks" class="card-title">0</h4>
+                                <p class="card-text">Tareas Activas</p>
+                            </div>
+                            <div class="stat-icon">
+                                <i class="fas fa-tasks fa-2x"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-3 col-sm-6 mb-3">
+                <div class="card stat-card bg-warning text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h4 id="pendingTasks" class="card-title">0</h4>
+                                <p class="card-text">Pendientes</p>
+                            </div>
+                            <div class="stat-icon">
+                                <i class="fas fa-clock fa-2x"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-3 col-sm-6 mb-3">
+                <div class="card stat-card bg-info text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h4 id="completedTasks" class="card-title">0</h4>
+                                <p class="card-text">Completadas</p>
+                            </div>
+                            <div class="stat-icon">
+                                <i class="fas fa-check-circle fa-2x"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects Section -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-project-diagram me-2"></i>
+                            Mis Proyectos
+                        </h5>
+                        <button class="btn btn-primary btn-sm" id="refreshProjectsBtn">
+                            <i class="fas fa-sync-alt me-1"></i>
+                            Actualizar
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <!-- Loading spinner -->
+                        <div id="loadingSpinner" class="text-center py-4">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Cargando proyectos...</span>
+                            </div>
+                            <p class="mt-2 text-muted">Cargando tus proyectos...</p>
+                        </div>
+
+                        <!-- Projects container -->
+                        <div id="projectsContainer" style="display: none;">
+                            <div class="row" id="projectsList">
+                            </div>
+                        </div>
+
+                        <!-- No projects-->
+                        <div id="noProjectsMessage" class="text-center py-5" style="display: none;">
+                            <i class="fas fa-folder-plus fa-3x text-muted mb-3"></i>
+                            <h5 class="text-muted">No tienes proyectos asignados</h5>
+                            <p class="text-muted">Contacta con tu líder de proyecto para ser asignado a un proyecto.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Modal -->
+    <div class="modal fade" id="projectModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-info-circle me-2"></i>
+                        Detalles del Proyecto
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="projectDetails">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="viewProjectTasksBtn">
+                        <i class="fas fa-list me-1"></i>
+                        Ver Tareas
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
