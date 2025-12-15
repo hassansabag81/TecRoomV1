@@ -1,0 +1,2 @@
+WALLET_LOCATION = (SOURCE = (METHOD = file) (METHOD_DATA = (DIRECTORY="/Users/abacusmobile/Documents/Semestre 10/TecRoom/Wallet_TecRoom")))
+SSL_SERVER_DN_MATCH=yes

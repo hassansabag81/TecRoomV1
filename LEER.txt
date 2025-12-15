@@ -1,0 +1,6 @@
+Para que funcione el server usa npm start, el archivo de app.js sirve para que cheques que si esta jalando la conexion a la bd.
+Para ejecutar app.js usa el comando node app.js y checa que te salga la consulta de usuarios.
+Recuerda cambiar las rutas en database.js
+Instala instantclient de la pagina de oracle, deja te pongo el link: https://www.oracle.com/database/technologies/instant-client/downloads.html
+En el .env cambia los parametros con los que tu tienes para conectarte a la bd
+En la termianl te sale el puerto a conectarte, igual es http://localhost:3000
